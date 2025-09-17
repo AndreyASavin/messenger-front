@@ -6,12 +6,13 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@composables/*": ["./src/composables/*"],
-      "@stores/*": ["./src/stores/*"],
-      "@types/*": ["./src/types/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@/*": ["src/*"],
+      // "@components/*": ["src/components/*"],
+      // "@composables/*": ["src/composables/*"],
+      // "@stores/*": ["src/stores/*"],
+      // "@types/*": ["src/types/*"],
+      // "@utils/*": ["src/utils/*"],
+      // "@views/*": ["src/views/*"],
     }
   }
 }

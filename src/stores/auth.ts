@@ -28,7 +28,7 @@ export const useAuthStore = defineStore('auth', () => {
     try {
       await wait(3);
       if (
-        credentials.login === "demo@example.com" &&
+        credentials.login === "login@email.com" &&
         credentials.password === "password"
       ) {
         setAuthData(mockToken, mockUser);
