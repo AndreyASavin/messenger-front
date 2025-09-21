@@ -1,14 +1,15 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  <div>
-    Hello
+  <div class="home-view">
+    <h1>Dashboard</h1>
+    <p>Welcome to your dashboard!</p>
   </div>
 </template>
 
+<script setup lang="ts">
+</script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.home-view {
+  padding: 2rem;
+}
 </style>

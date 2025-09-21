@@ -44,45 +44,78 @@ const handleClick = (event: MouseEvent) => {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
 .btn {
-  @apply px-4 py-2 rounded font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
-}
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  font-weight: 500;
+  border: 1px solid transparent;
+  @include transition;
 
-.btn-primary {
-  @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
-}
+  &:focus {
+    @include focus-ring;
+  }
 
-.btn-secondary {
-  @apply bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
-}
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
-.btn-danger {
-  @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
-}
+  &.btn-primary {
+    @include button-variant($primary-color, white, $primary-hover);
+  }
 
-.btn-success {
-  @apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
-}
+  &.btn-secondary {
+    @include button-variant($secondary-color, white, darken($secondary-color, 10%));
+  }
 
-.btn-sm {
-  @apply px-3 py-1 text-sm;
-}
+  &.btn-danger {
+    @include button-variant($danger-color, white, darken($danger-color, 10%));
+  }
 
-.btn-lg {
-  @apply px-6 py-3 text-lg;
-}
+  &.btn-success {
+    @include button-variant($success-color, white, darken($success-color, 10%));
+  }
 
-.btn-loading {
-  @apply opacity-75 cursor-not-allowed;
-}
+  &.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+  }
 
-.btn-disabled {
-  @apply opacity-50 cursor-not-allowed;
+  &.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+  }
+
+  &.btn-loading {
+    opacity: 0.75;
+    cursor: not-allowed;
+  }
+
+  &.btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .btn-spinner {
-  @apply inline-block w-4 h-4 border-2 border-current border-r-transparent rounded-full animate-spin;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
   margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

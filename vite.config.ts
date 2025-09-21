@@ -17,15 +17,22 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      // '@composables': resolve(__dirname, './src/composables'),
-      // '@components': resolve(__dirname, './src/components'),
-      // '@stores': resolve(__dirname, './src/stores'),
-      // '@types': resolve(__dirname, './src/types'),
-      // '@utils': resolve(__dirname, './src/utils'),
-      // '@views': resolve(__dirname, './src/views'),
     },
   },
   build: {
     target: 'ESNext'
-  }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+          additionalData:
+          // `
+          //   @use "./src/assets/scss/index.scss" as *;
+          // `
+          `
+          @import "@/assets/scss/index.scss";
+          `
+      }
+    }
+  },
 })

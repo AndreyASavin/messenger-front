@@ -19,9 +19,9 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('@/views/register-view.vue'),
     meta: {requiresGuest: true},
   },
-  // {
-  //   path: '/:pathMatch(.*)*',
-  //   name: 'not-found',
-  //   component: () => import('@views'),
-  // },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: () => import('@/views/not-found-view.vue'),
+  },
 ]
