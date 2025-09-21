@@ -30,3 +30,6 @@ coverage
 *.tsbuildinfo
 
 .editorconfig
+
+.env
+.env*

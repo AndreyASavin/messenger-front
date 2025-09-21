@@ -85,7 +85,6 @@ const authError = ref('');
 
 const validateField = (field: keyof typeof errors) => {
   if (field === 'email' && !form.login) {
-    console.log('asasasasa', form.login)
     errors.email = 'Email is required';
   // } else if (field === 'email' && !/\S+@\S+\.\S+/.test(form.login)) {
   //   errors.email = 'Email is invalid';

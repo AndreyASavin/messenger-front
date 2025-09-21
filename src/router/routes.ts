@@ -20,6 +20,17 @@ export const routes: RouteRecordRaw[] = [
     meta: {requiresGuest: true},
   },
   {
+    path: '/chat',
+    name: 'chat',
+    redirect: { name: 'chat-room', params: { roomId: 'general' } }
+  },
+  {
+    path: '/chat/:roomId',
+    name: 'chat-room',
+    component: () => import('@/views/chat-view.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     component: () => import('@/views/not-found-view.vue'),

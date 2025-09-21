@@ -111,7 +111,6 @@ const validateField = (field: keyof typeof errors) => {
   }
 
   if (field === 'email' && !form.email) {
-    console.log('asas', form.email)
     errors.email = 'Email is required';
   } else if (field === 'email' && !/\S+@\S+\.\S+/.test(form.email)) {
     errors.email = 'Email is invalid';

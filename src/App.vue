@@ -17,13 +17,14 @@ import { MHeader, MFooter, MSidebar } from '../src/components/layout'
 
 const navItems = ref([
   { to: '/', text: 'Dashboard', icon: '🏠' },
-  { to: '/chat', text: 'Chat', icon: '💬' },
-  { to: '/calls', text: 'Calls', icon: '📞' },
+  { to: '/chat/general', text: 'General Chat', icon: '💬' },
+  { to: '/chat/random', text: 'Random Chat', icon: '🎲' },
   { to: '/settings', text: 'Settings', icon: '⚙️' },
 ]);
 </script>
 
 <style lang="scss">
+// @import '@/assets/scss/utils/variables';
 
 #app {
   min-height: 100vh;
