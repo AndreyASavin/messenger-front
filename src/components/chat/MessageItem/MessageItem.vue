@@ -71,7 +71,6 @@ const statusText = computed(() => {
 </script>
 
 <style scoped lang="scss">
-// @import '@/assets/scss/utils/variables';
 
 .message-item {
   display: flex;

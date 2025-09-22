@@ -125,7 +125,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang="scss">
-// @import '@/assets/scss/utils/variables';
 
 .message-list {
   flex: 1;

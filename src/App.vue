@@ -24,7 +24,6 @@ const navItems = ref([
 </script>
 
 <style lang="scss">
-// @import '@/assets/scss/utils/variables';
 
 #app {
   min-height: 100vh;

@@ -52,6 +52,26 @@ export const useChatStore = defineStore('chat', () => {
     }
   };
 
+  const uploadFile = async (file: File): Promise<{ success: boolean; url?: string; error?: string }> => {
+    // В реальном приложении здесь будет логика загрузки файла на сервер
+    // Сейчас используем заглушку
+    
+    try {
+      // Имитируем загрузку файла
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // В реальном приложении здесь будет URL от сервера
+      const mockUrl = URL.createObjectURL(file);
+      
+      return { success: true, url: mockUrl };
+    } catch (error) {
+      return { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Failed to upload file' 
+      };
+    }
+  };
+
   const addMessages = (newMessages: Message[]) => {
     newMessages.forEach(message => addMessage(message));
   };
@@ -94,6 +114,7 @@ export const useChatStore = defineStore('chat', () => {
     setRooms,
     setCurrentRoom,
     clearMessages,
-    clearError
+    clearError,
+    uploadFile
   };
 });
