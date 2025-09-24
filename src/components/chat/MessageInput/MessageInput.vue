@@ -140,28 +140,28 @@ const quickActions = ref([
 
 
 // Безопасные геттеры для свойств файла
-const getFileName = (file: any): string => {
+const getFileName = (file: FileAttachment): string => {
   return file?.name || 'Unknown file';
 };
 
-const getFileSize = (file: any): number => {
+const getFileSize = (file: FileAttachment): number => {
   return file?.size || 0;
 };
 
-const getFileType = (file: any): string => {
+const getFileType = (file: FileAttachment): string => {
   return file?.type || '';
 };
 
-const getFilePreview = (file: any): string => {
+const getFilePreview = (file: FileAttachment): string => {
   return file?.preview || getFileIcon(file);
 };
 
-const getFileKey = (file: any, index: number): string => {
+const getFileKey = (file: FileAttachment, index: number): string => {
   return file?.id || file?.name || `file-${index}-${Date.now()}`;
 };
 
 // Проверка, является ли файл изображением
-const isImageFile = (file: any): boolean => {
+const isImageFile = (file: FileAttachment): boolean => {
   const type = getFileType(file);
   return !!type && type.startsWith('image/');
 };
@@ -244,7 +244,7 @@ const removeAttachedFile = (index: number) => {
 };
 
 // Получение иконки для файла
-const getFileIcon = (file: any): string => {
+const getFileIcon = (file: FileAttachment): string => {
   if (!file) return '📁';
   
   const extension = (file.name || '').split('.').pop()?.toLowerCase() || '';
