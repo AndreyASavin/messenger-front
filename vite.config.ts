@@ -14,6 +14,9 @@ export default defineConfig({
     vueJsx(),
     vueDevTools(),
   ],
+  worker: {
+    format: 'es',
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),

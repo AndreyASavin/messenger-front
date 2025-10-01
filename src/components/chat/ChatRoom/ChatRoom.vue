@@ -23,6 +23,9 @@
       @message-sent="handleMessageSent"
       class="chat-room-input"
     />
+
+    <div v-if="">
+    </div>
   </div>
 </template>
 
@@ -31,11 +34,22 @@ import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useChatStore } from '../../../stores/chat';
 import { useWebSocket } from '../../../composables/useWebSocket';
+import { useSync } from '../../../composables/useSync';
+import { useHeavyTask } from '../../../composables/useHeavyTask';
 import { MessageInput, MessageList } from '../../../components/chat'
 
 const route = useRoute();
 const chatStore = useChatStore();
 const { connect, disconnect, isConnected, sendMessage } = useWebSocket();
+
+const { data: syncedSettings, updateData: updateSettings, isLoading: syncLoading } = useSync('chat-settings');
+const { processData, result: processedMessages, isLoading: processingMessages } = useHeavyTask();
+
+const processMessagesHistory = (messages: any[]) => {
+  if (messages.length > 1000) {
+    processData(messages);
+  }
+}
 
 // Получаем ID комнаты из параметров маршрута
 const roomId = ref<string>('');
@@ -147,12 +161,26 @@ onMounted(() => {
   // В реальном приложении URL будет приходить из конфигурации
   const wsUrl = import.meta.env.VITE_WS_URL || 'ws://localhost:3000/ws';
   connect(wsUrl);
+
+  updateSettings({
+    theme: 'light',
+    notifications: true
+  })
 });
 
 // Следим за изменениями параметров маршрута
 watch(() => route.params.roomId, () => {
   handleRouteChange();
 });
+
+watch(
+  processedMessages,
+  (newMessages) => {
+    if (newMessages) {
+      chatStore.addMessage(newMessages)
+    }
+  }
+)
 
 // Отключаемся от WebSocket при размонтировании компонента
 onUnmounted(() => {
